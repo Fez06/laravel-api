@@ -15,4 +15,15 @@ class TypeController extends Controller
             'results' => $types
         ]);
     }
+
+    public function show(string $slug){
+
+        $type= Type::where('slug', $slug)->with('technologies')->first();
+
+        return response()->json([
+            'success' => true,
+            'results' => $type
+        ]);
+    }
+
 }
